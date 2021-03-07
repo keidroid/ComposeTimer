@@ -20,6 +20,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
@@ -41,20 +42,24 @@ class MainViewModel @Inject constructor() : ViewModel() {
     val timerState: LiveData<TimerState>
         get() = _timerState
 
+    private var job: Job? = null
+
     fun timerStartOrStop() {
         if (_timerState.value != TimerState.Stop) {
             _timerState.value = TimerState.Stop
             _timerSecond.value = 60
+            job?.cancel()
             return
         }
-        viewModelScope.launch {
+        job = viewModelScope.launch {
             _timerState.value = TimerState.Start
             var second = 60
 
-            while (isActive && _timerState.value == TimerState.Start) {
+            while (isActive) {
                 second--
                 if (second < 0) {
                     _timerState.value = TimerState.Stop
+                    job?.cancel()
                     break
                 } else {
                     _timerSecond.value = second

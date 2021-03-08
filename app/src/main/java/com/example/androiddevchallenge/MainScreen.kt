@@ -101,9 +101,9 @@ fun MainScreen() {
                         ) {
                             Row {
                                 val secondValue = second.value ?: return@Row
-                                CubeNumber(secondValue / 10)
+                                DigitalNumber(secondValue / 10)
                                 Spacer(modifier = Modifier.width(16.dp))
-                                CubeNumber(secondValue % 10)
+                                DigitalNumber(secondValue % 10)
                             }
                         }
                     }

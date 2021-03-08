@@ -19,17 +19,18 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Replay
@@ -47,7 +48,6 @@ import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.theme.OriginalBlue1
 import com.example.androiddevchallenge.ui.theme.OriginalBlue2
 import com.example.androiddevchallenge.ui.theme.OriginalBlue3
-import com.example.androiddevchallenge.ui.theme.typography
 
 @Composable
 fun MainScreen() {
@@ -92,20 +92,6 @@ fun MainScreen() {
                             .background(Color.White)
                             .size(280.dp)
                     ) {
-//                        Canvas(
-//                            modifier = Modifier
-//                                .width(320.dp)
-//                                .height(320.dp)
-//                        ) {
-//                            drawRect(
-//                                Color.White,
-//                                topLeft = Offset(0f, 0f),
-//                                size = Size(this.size.width, 55f),
-//                                blendMode = BlendMode.Difference,
-//                            )
-//                            drawCircle(Color.White, center = Offset(50f, 200f), radius = 40f)
-//                        }
-
                         Box(
                             contentAlignment = Alignment.Center,
                             modifier = Modifier
@@ -113,13 +99,12 @@ fun MainScreen() {
                                 .background(verticalGradientBrush2)
                                 .size(276.dp)
                         ) {
-
-                            Text(
-                                second.value.toString(),
-                                style = typography.h2,
-                                color = Color.White,
-                                modifier = Modifier.padding(16.dp)
-                            )
+                            Row {
+                                val secondValue = second.value ?: return@Row
+                                CubeNumber(secondValue / 10)
+                                Spacer(modifier = Modifier.width(16.dp))
+                                CubeNumber(secondValue % 10)
+                            }
                         }
                     }
                     Spacer(Modifier.height(8.dp))

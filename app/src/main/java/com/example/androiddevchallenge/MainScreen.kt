@@ -41,7 +41,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.androiddevchallenge.ui.theme.MyTheme
@@ -54,15 +53,15 @@ fun MainScreen() {
     MyTheme {
         val verticalGradientBrush = Brush.verticalGradient(
             colors = listOf(
-                OriginalBlue1,
-                OriginalBlue2
+                OriginalBlue3,
+                OriginalBlue1
             )
         )
 
         val verticalGradientBrush2 = Brush.verticalGradient(
             colors = listOf(
-                OriginalBlue3,
-                OriginalBlue2
+                OriginalBlue2,
+                OriginalBlue1
             )
         )
 
@@ -97,7 +96,7 @@ fun MainScreen() {
                             modifier = Modifier
                                 .clip(CircleShape)
                                 .background(verticalGradientBrush2)
-                                .size(276.dp)
+                                .size((280 - 4).dp)
                         ) {
                             Row {
                                 val secondValue = second.value ?: return@Row
@@ -131,13 +130,5 @@ fun MainScreen() {
                 }
             }
         }
-    }
-}
-
-@Preview
-@Composable
-fun LightPreview() {
-    MyTheme {
-        MainScreen()
     }
 }

@@ -22,11 +22,11 @@ import androidx.compose.ui.graphics.Color
 
 private val ColorPalette = darkColors(
     primary = Color.White,
-    primaryVariant = OriginalBlue2,
+    primaryVariant = OriginalBlue1,
     secondary = teal200,
     background = Color.White,
     surface = Color.White,
-    onPrimary = OriginalBlue1,
+    onPrimary = OriginalBlue3,
     onSecondary = Color.Black,
     onBackground = Color.Black,
     onSurface = Color.White,

@@ -30,8 +30,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.androiddevchallenge.ui.theme.DigitalOff
+import com.example.androiddevchallenge.ui.theme.DigitalOn
 
 @Composable
 fun DigitalNumber(number: Int) {
@@ -44,10 +46,8 @@ fun DigitalNumber(number: Int) {
                             val pixel = NUMBERS[number][5 * y + x]
 
                             val backgroundColors by animateColorAsState(
-                                targetValue = if (pixel == 1) Color(0xccffffff) else Color(
-                                    0x04ffffff
-                                ),
-                                animationSpec = tween(667)
+                                targetValue = if (pixel == 1) DigitalOn else DigitalOff,
+                                animationSpec = tween(2000)
                             )
 
                             Box(
@@ -168,3 +168,63 @@ val NUMBERS = listOf(
         0, 1, 1, 1, 0,
     ),
 )
+
+@Preview("0")
+@Composable
+fun NumberZeroPreview() {
+    DigitalNumber(0)
+}
+
+@Preview("1")
+@Composable
+fun NumberOnePreview() {
+    DigitalNumber(1)
+}
+
+@Preview("2")
+@Composable
+fun NumberTwoPreview() {
+    DigitalNumber(2)
+}
+
+@Preview("3")
+@Composable
+fun NumberThreePreview() {
+    DigitalNumber(3)
+}
+
+@Preview("4")
+@Composable
+fun NumberFourPreview() {
+    DigitalNumber(4)
+}
+
+@Preview("5")
+@Composable
+fun NumberFivePreview() {
+    DigitalNumber(5)
+}
+
+@Preview("6")
+@Composable
+fun NumberSixPreview() {
+    DigitalNumber(6)
+}
+
+@Preview("7")
+@Composable
+fun NumberSevenPreview() {
+    DigitalNumber(7)
+}
+
+@Preview("8")
+@Composable
+fun NumberEightPreview() {
+    DigitalNumber(8)
+}
+
+@Preview("9")
+@Composable
+fun NumberNinePreview() {
+    DigitalNumber(9)
+}
